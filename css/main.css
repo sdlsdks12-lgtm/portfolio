@@ -1,4 +1,4 @@
-/* 기존 css/main.css 파일 내용 아래쪽에 덮어쓰거나 전체 변경해 주세요 */
+
 @import "variables.css";
 @import "components/navbar.css";
 @import "components/cards.css";
@@ -43,18 +43,15 @@ h2 {
   }
 }
 
-/* ------------------------------------------------ */
-/* ✨ 수정 및 추가된 로고 레이어 & 울트라 타이포그래피 스타일 */
 
-/* 로고 박스: 흰색 배경 로고가 미색 배경 위에 깔끔하게 얹어지도록 얇은 검은 선 부여 */
 .logo-container {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff; /* 로고 자체의 흰색 배경과 통일 */
-  border: 1px solid var(--color-border); /* 정갈한 테두리 선 */
+  background-color: #ffffff; 
+  border: 1px solid var(--color-border); 
   padding: 4px 10px;
-  height: 45px; /* 로고 높이 조절 */
+  height: 45px; 
   transition: var(--transition-smooth);
 }
 
@@ -68,7 +65,7 @@ h2 {
   object-fit: contain;
 }
 
-/* HERO 섹션 */
+
 .hero-section {
   height: 100vh;
   display: flex;
@@ -85,9 +82,9 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* 💥 대폭 키운 메인 타이포그래피 크기 (Mobile-first 디자인) */
+
 .mega-title {
-  font-size: 4.5rem; /* 모바일에서도 화면에 꽉 차게 변경 */
+  font-size: 4.5rem; 
   font-weight: 800;
   letter-spacing: 4px;
   line-height: 0.9;
@@ -95,7 +92,7 @@ h2 {
   text-transform: uppercase;
 }
 
-/* 태블릿 이상 화면에서 글자 크기를 극대화 (교수님 요구사양 반영) */
+
 @media (min-width: 768px) {
   .mega-title {
     font-size: 8.5rem;
@@ -103,7 +100,7 @@ h2 {
   }
 }
 
-/* PC 화면 대형 폰트 사이즈 조정 */
+
 @media (min-width: 1200px) {
   .mega-title {
     font-size: 10.5rem;
@@ -140,9 +137,9 @@ h2 {
   background-color: var(--text-color, var(--color-text));
   color: var(--color-bg);
 }
-/* ------------------------------------------------ */
 
-/* 필터 버튼 스타일 */
+
+
 .filter-container {
   display: flex;
   flex-wrap: wrap;
@@ -166,7 +163,7 @@ h2 {
   color: var(--color-bg);
 }
 
-/* 스크롤 애니메이션 스타일 */
+
 .observe-me {
   opacity: 0;
   transform: translateY(40px);
@@ -180,7 +177,7 @@ h2 {
   transform: translateY(0);
 }
 
-/* 푸터 */
+
 .main-footer {
   text-align: center;
   padding: var(--spacing-lg) 0;
@@ -189,9 +186,7 @@ h2 {
   letter-spacing: 1px;
 }
 
-/* ================================================ */
-/* 📄 여기서부터 상세페이지(Caso de Estudio) 전용 디자인 */
-/* ================================================ */
+
 
 .detalle-page {
   background-color: var(--color-bg) !important;
