@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caso de Estudio | Ina Choi</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      body.detalle-page {
+        background-color: #ffffff !important;
+        color: #1a1a1a;
+      }
+      .detalle-navbar {
+        border-bottom: 1px solid #1a1a1a;
+        padding: 1.5rem 0;
+        background-color: #ffffff;
+      }
+      .detalle-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+      }
+      .btn-back {
+        display: inline-block;
+        text-decoration: none;
+        color: #1a1a1a;
+        border: 1px solid #1a1a1a;
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        transition: all 0.2s ease;
+      }
+      .btn-back:hover {
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+      .detalle-header {
+        margin-bottom: 3rem;
+      }
+      .detalle-tag {
+        font-size: 0.85rem;
+        color: #cc7d2e;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+      .detalle-title {
+        font-size: 3rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+      }
+      .main-image-box {
+        border: 1px solid #1a1a1a;
+        margin-bottom: 4rem;
+        background-color: #ffffff;
+        overflow: hidden;
+      }
+      .main-image-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+      }
+      .case-study-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
+      @media (min-width: 768px) {
+        .case-study-grid {
+          grid-template-columns: 2fr 1fr;
+        }
+      }
+      .study-section {
+        margin-bottom: 2.5rem;
+      }
+      .study-section h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #1a1a1a;
+        padding-bottom: 0.3rem;
+      }
+      .study-section p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #333333;
+        text-align: justify;
+      }
+      .sidebar-box {
+        border: 1px solid #1a1a1a;
+        padding: 1.5rem;
+        background-color: #ffffff;
+        align-self: start;
+      }
+      .sidebar-box h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+      }
+      .sidebar-box p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #555555;
+        margin-bottom: 1.5rem;
+      }
+      .sidebar-box p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body class="detalle-page">
+    <header class="detalle-navbar">
+      <div class="nav-container">
+        <a
+          href="index.html"
+          class="logo"
+          style="
+            letter-spacing: 2px;
+            font-weight: 800;
+            color: #1a1a1a;
+            text-decoration: none;
+          "
+          >INA CHOI</a
+        >
+      </div>
+    </header>
+
+    <div class="detalle-container">
+      <a href="index.html#proyectos" class="btn-back">← Volver a Proyectos</a>
+
+      <header class="detalle-header">
+        <span id="proj-categoria" class="detalle-tag">Categoría</span>
+        <h1 id="proj-titulo" class="detalle-title">Cargando Proyecto...</h1>
+      </header>
+
+      <div class="main-image-box">
+        <img id="proj-imagen" src="" alt="Imagen del proyecto" />
+      </div>
+
+      <div class="case-study-grid">
+        <div class="main-contents">
+          <div class="study-section">
+            <h2>Contexto</h2>
+            <p id="proj-contexto">내용을 불러오는 중입니다...</p>
+          </div>
+          <div class="study-section">
+            <h2>Proceso</h2>
+            <p id="proj-proceso">내용을 불러오는 중입니다...</p>
+          </div>
+          <div class="study-section">
+            <h2>Resultado</h2>
+            <p id="proj-resultado">내용을 불러오는 중입니다...</p>
+          </div>
+        </div>
+
+        <aside class="sidebar-box">
+          <h3>Año</h3>
+          <p id="proj-ano">-</p>
+          <h3>Ficha Técnica</h3>
+          <p id="proj-ficha">내용을 불러오는 중입니다...</p>
+        </aside>
+      </div>
+    </div>
+
+    <script src="js/proyectos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const PROYECTO_ID = "vintage-jabon";
+        const proyecto = proyectosData.find((p) => p.id === PROYECTO_ID);
+        if (proyecto) {
+          document.getElementById("proj-titulo").textContent = proyecto.titulo;
+          document.getElementById("proj-categoria").textContent =
+            proyecto.categoria;
+          document.getElementById("proj-imagen").src = proyecto.imagen;
+          document.getElementById("proj-imagen").alt =
+            "Proyecto " + proyecto.titulo;
+          document.getElementById("proj-contexto").textContent =
+            proyecto.contexto;
+          document.getElementById("proj-proceso").textContent =
+            proyecto.proceso;
+          document.getElementById("proj-resultado").textContent =
+            proyecto.resultado;
+          document.getElementById("proj-ano").textContent = proyecto.ano;
+          document.getElementById("proj-ficha").textContent = proyecto.ficha;
+          document.title = proyecto.titulo + " | Caso de Estudio";
+        }
+      });
+    </script>
+  </body>
+</html>
