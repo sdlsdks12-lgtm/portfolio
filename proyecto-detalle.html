@@ -6,7 +6,7 @@
     <title>Caso de Estudio | Ina Choi</title>
     <link rel="stylesheet" href="css/main.css" />
     <style>
-      /* 상세 페이지 전용 완전한 화이트 배경 및 레이아웃 스타일 */
+  
       body.detalle-page {
         background-color: #ffffff !important;
         color: #1a1a1a;
@@ -24,7 +24,7 @@
         padding: 4rem 1.5rem;
       }
 
-      /* 돌아가기 버튼 (얇은 선 디자인) */
+  
       .btn-back {
         display: inline-block;
         text-decoration: none;
@@ -42,7 +42,7 @@
         color: #ffffff;
       }
 
-      /* 프로젝트 메인 타이틀 */
+   
       .detalle-header {
         margin-bottom: 3rem;
       }
@@ -64,7 +64,7 @@
         line-height: 1.1;
       }
 
-      /* 대형 이미지 영역 */
+
       .main-image-box {
         border: 1px solid #1a1a1a;
         margin-bottom: 4rem;
@@ -79,7 +79,7 @@
         object-fit: contain;
       }
 
-      /* 케이스 스터디 본문 레이아웃 (Grid 활용) */
+    
       .case-study-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -93,7 +93,7 @@
         }
       }
 
-      /* 섹션별 스타일 */
+     
       .study-section {
         margin-bottom: 2.5rem;
       }
@@ -116,7 +116,7 @@
         margin-bottom: 1.5rem;
       }
 
-      /* 새로 추가된 본문 이미지 액자 스타일 */
+      
       .section-gallery {
         display: flex;
         flex-direction: column;
@@ -137,7 +137,7 @@
         display: block;
       }
 
-      /* 우측 기술 스택 박스 */
+  
       .sidebar-box {
         border: 1px solid #1a1a1a;
         padding: 1.5rem;
@@ -234,7 +234,7 @@
           proyectosData[0];
 
         if (proyecto) {
-          // 기본 데이터 바인딩
+          
           document.getElementById("proj-titulo").textContent = proyecto.titulo;
           document.getElementById("proj-categoria").textContent =
             proyecto.categoria;
@@ -250,7 +250,7 @@
           document.getElementById("proj-ano").textContent = proyecto.ano;
           document.getElementById("proj-ficha").textContent = proyecto.ficha;
 
-          // 과정(Proceso) 이미지 동적 생성
+       
           const boxProceso = document.getElementById("gallery-proceso");
           boxProceso.innerHTML = "";
           if (
@@ -265,7 +265,7 @@
             });
           }
 
-          // 결과(Resultado) 이미지 동적 생성
+         
           const boxResultado = document.getElementById("gallery-resultado");
           boxResultado.innerHTML = "";
           if (
