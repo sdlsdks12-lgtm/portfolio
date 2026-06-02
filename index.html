@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ina Choi | Portafolio</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* 💎 [악세사리 1] Hero 섹션 움직이는 배경 이미지 효과 */
+      .hero-section {
+        position: relative;
+        overflow: hidden;
+        background-color: var(--color-bg);
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 은은하게 스케일이 커지며 움직이는 배경 레이어 */
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("img/main.png"); /* 💡 여기에 메인 배경으로 쓸 이미지 경로를 넣어주세요! */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15; /* 텍스트 가독성을 위해 은은하게 15% 정도만 노출 */
+        z-index: 1;
+        pointer-events: none;
+        animation: subtlePan 20s ease-in-out infinite alternate;
+      }
+
+      @keyframes subtlePan {
+        0% {
+          transform: scale(1) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.08) translate(-1%, -1%);
+        }
+      }
+
+      /* 배경 위 텍스트들이 묻히지 않도록 z-index 조절 */
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      /* 💎 [악세사리 2] 마우스 커스텀 포인터 점 스타일 */
+      .custom-cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--color-text);
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        display: none; /* 스크립트 실행 전 기본 숨김 */
+        transition:
+          width 0.2s,
+          height 0.2s,
+          background-color 0.2s,
+          border 0.2s;
+      }
+
+      /* Sobre mí 스타일 보존 */
+      .sobre-mi-intro {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 3rem;
+        max-width: 800px;
+      }
+      .sobre-mi-intro .intro-p {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+      .info-grid-boxes {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-top: 2rem;
+      }
+      @media (min-width: 768px) {
+        .info-grid-boxes {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .info-status-box {
+        border: 1px solid var(--color-border);
+        padding: var(--spacing-md);
+        background-color: var(--color-white);
+        transition: var(--transition-smooth);
+      }
+      .info-status-box:hover {
+        box-shadow: 3px 3px 0px var(--color-border);
+      }
+      .info-status-box h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 0.3rem;
+      }
+      .info-status-box p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+      }
+      .skills-icon-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+      .skill-icon-item {
+        border: 1px solid var(--color-border);
+        background-color: var(--color-bg);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .skill-icon-item img {
+        width: 100%;
+        max-width: 40px;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 0.25rem;
+      }
+      .skill-icon-item span {
+        font-size: 0.7rem;
+        font-weight: bold;
+        color: #555;
+      }
+
+      /* CONTACT 섹션 레이아웃 */
+      .contact-content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+      @media (min-width: 768px) {
+        .contact-content-wrapper {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .direct-info-hip {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .contact-row {
+        margin-bottom: 2.5rem;
+      }
+      .contact-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #888888;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+        display: block;
+      }
+
+      .contact-value {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--color-text);
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: var(--transition-smooth);
+      }
+      a.contact-value:hover {
+        color: #cc7d2e;
+        padding-left: 4px;
+      }
+
+      .social-links-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      .btn-social-link {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--color-text);
+        text-decoration: none;
+        border-bottom: 1px solid var(--color-text);
+        padding-bottom: 2px;
+        letter-spacing: 1px;
+        transition: var(--transition-smooth);
+      }
+      .btn-social-link:hover {
+        color: #cc7d2e;
+        border-bottom-color: #cc7d2e;
+      }
+
+      .contacto-section {
+        margin-bottom: 6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+
+    <header class="navbar" id="navbar">
+      <div class="nav-container">
+        <a
+          href="#hero"
+          class="logo-container"
+          style="
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            text-decoration: none;
+          "
+        >
+          INA CHOI
+        </a>
+        <nav class="nav-menu">
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <p class="year-label">2025 - 2026</p>
+          <h1 class="mega-title">PORTAFOLIO</h1>
+          <p class="subtitle">Diseño Gráfico & Innovación Visual</p>
+          <div class="disciplines-list">
+            <span>BRANDING</span> • <span>PACKAGING</span> •
+            <span>INFOGRAFÍA</span> • <span>EDITORIAL</span> •
+            <span>ILUSTRACIÓN</span>
+          </div>
+          <a href="#proyectos" class="btn-cta">Explorar Proyectos ↓</a>
+        </div>
+      </section>
+
+      <section id="sobre-mi" class="sobre-mi-section observe-me">
+        <div class="container">
+          <h2>Sobre mí</h2>
+          <div class="sobre-mi-intro">
+            <p class="intro-p">
+              ¡Hola! Soy Ina, estudiante de diseño gráfico en la Universidad
+              Europea.
+            </p>
+            <p>
+              Soy uma diseñadora que busca constantemente la combinación ideal
+              entre las técnicas analógicas, el dibujo a mano y las herramientas
+              digitales. Tengo un gran interés en explorar la inteligencia
+              artificial de manera equilibrada in el diseño, buscando siempre
+              unir la creatividad artística con nuevas formas...
+            </p>
+          </div>
+
+          <div class="info-grid-boxes">
+            <div class="info-status-box">
+              <h3>Estudios</h3>
+              <p>
+                <strong>Universidad Europea</strong><br />Grado en Diseño
+                Gráfico<br />(09.2021 - Actualidad)
+              </p>
+            </div>
+
+            <div class="info-status-box">
+              <h3>Habilidades</h3>
+              <p style="font-size: 0.85rem; color: #777; margin-bottom: 0.5rem">
+                Herramientas digitales:
+              </p>
+              <div class="skills-icon-container">
+                <div class="skill-icon-item">
+                  <img src="img/ps.png" alt="Photoshop" />
+                  <span>Ps</span>
+                </div>
+                <div class="skill-icon-item">
+                  <img src="img/ai.png" alt="Illustrator" />
+                  <span>Ai</span>
+                </div>
+                <div class="skill-icon-item">
+                  <img src="img/id.png" alt="InDesign" />
+                  <span>Id</span>
+                </div>
+                <div class="skill-icon-item">
+                  <img src="img/pr.png" alt="Premiere Pro" />
+                  <span>Pr</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-status-box">
+              <h3>Experiencia</h3>
+              <p>
+                <strong>09.2023 - Musitec</strong><br />Oferta de colaboración /
+                Prácticas de diseño gráfico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="proyectos-section observe-me">
+        <div class="container">
+          <h2>Proyectos</h2>
+          <div class="filter-container">
+            <button class="filter-btn active" data-category="todos">
+              Todos
+            </button>
+            <button class="filter-btn" data-category="Branding">
+              Branding
+            </button>
+            <button class="filter-btn" data-category="Packaging">
+              Packaging
+            </button>
+            <button class="filter-btn" data-category="Infografía">
+              Infografía
+            </button>
+            <button class="filter-btn" data-category="Editorial">
+              Editorial
+            </button>
+            <button class="filter-btn" data-category="Ilustración">
+              Ilustración
+            </button>
+          </div>
+          <div id="gallery" class="projects-gallery"></div>
+        </div>
+      </section>
+
+      <section id="contacto" class="contacto-section observe-me">
+        <div class="container standard-box">
+          <h2>Contacto</h2>
+
+          <div class="contact-content-wrapper">
+            <div class="direct-info-hip">
+              <div class="contact-row">
+                <span class="contact-label">— TELEPHONE</span>
+                <a href="tel:+34675641110" class="contact-value"
+                  >675 64 11 10</a
+                >
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-label">— E-MAIL ADDRESS</span>
+                <a href="mailto:Sdlsdks12@gmail.com" class="contact-value"
+                  >Sdlsdks12@gmail.com</a
+                >
+              </div>
+
+              <div class="contact-row">
+                <span class="contact-label">— NETWORKS</span>
+                <div class="social-links-grid">
+                  <a
+                    href="https://www.instagram.com/yoridori25"
+                    target="_blank"
+                    class="btn-social-link"
+                    >INSTAGRAM</a
+                  >
+                  <a
+                    href="https://www.linkedin.com/in/ina-choi-design"
+                    target="_blank"
+                    class="btn-social-link"
+                    >LINKEDIN</a
+                  >
+                  <a
+                    href="https://wa.me/34675641110"
+                    target="_blank"
+                    class="btn-social-link"
+                    >WHATSAPP</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" required minlength="2" />
+                <span class="error-msg" id="name-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required />
+                <span class="error-msg" id="email-error"></span>
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  required
+                  minlength="10"
+                ></textarea>
+                <span class="error-msg" id="message-error"></span>
+              </div>
+              <button type="submit" class="btn-submit">Enviar Mensaje</button>
+              <div id="form-success" class="success-msg"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <p>© 2026 Ina Choi. Portafolio de Diseño Gráfico.</p>
+    </footer>
+
+    <script src="js/proyectos.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+      const dot = document.getElementById("cursor-dot");
+
+      // 마우스가 움직일 때 점 위치 업데이트
+      document.addEventListener("mousemove", (e) => {
+        dot.style.display = "block";
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+      });
+
+      // 클릭할 수 있는 요소들에 마우스 올리면 커서가 커지는 인터랙션 효과
+      const interactives = document.querySelectorAll(
+        "a, button, input, textarea, .filter-btn",
+      );
+      interactives.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          dot.style.width = "30px";
+          dot.style.height = "30px";
+          dot.style.backgroundColor = "rgba(26, 26, 26, 0.1)";
+          dot.style.border = "1px solid #1a1a1a";
+        });
+        el.addEventListener("mouseleave", () => {
+          dot.style.width = "8px";
+          dot.style.height = "8px";
+          dot.style.backgroundColor = "#1a1a1a";
+          dot.style.border = "none";
+        });
+      });
+    </script>
+  </body>
+</html>
