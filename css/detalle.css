@@ -1,0 +1,115 @@
+body {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text);
+  font-family: var(--font-main);
+  margin: 0;
+}
+.detalle-navbar {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+  background-color: var(--color-bg);
+}
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.logo {
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--color-text);
+}
+.detalle-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+@media (min-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+.btn-back {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-lg);
+  transition: var(--transition-smooth);
+}
+.btn-back:hover {
+  background-color: var(--color-text);
+  color: var(--color-white);
+}
+.study-section {
+  margin-bottom: 2.5rem;
+}
+.study-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+.study-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  text-align: justify;
+}
+.main-image-box,
+.section-img-box {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  overflow: hidden;
+  margin-bottom: var(--spacing-lg);
+}
+.main-image-box img,
+.section-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.section-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: 1rem;
+}
+.sidebar-box {
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+  background-color: var(--color-white);
+  align-self: start;
+}
+.sidebar-box h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.sidebar-box p {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -1,0 +1,49 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  padding: var(--spacing-md) 0;
+  transition: var(--transition-smooth);
+  z-index: 1000;
+}
+
+/* 스크롤을 내렸을 때 하얀 배경과 얇은 검은 선이 생기는 효과 */
+.navbar.scrolled {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-sm) 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.nav-menu a {
+  color: var(--color-text);
+  text-decoration: none;
+  margin-left: var(--spacing-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: var(--transition-smooth);
+}
+
+.nav-menu a:hover {
+  color: var(--color-accent);
+}

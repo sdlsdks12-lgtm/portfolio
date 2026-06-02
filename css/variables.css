@@ -1,0 +1,17 @@
+:root {
+  /* 이나님 PDF에서 추출한 따뜻한 베이지 색감 */
+  --color-bg: #fdfaf4; /* 메인 배경색 (미색) */
+  --color-text: #1a1a1a; /* 글자색 (완전 검은색이 아닌 부드러운 검은색) */
+  --color-accent: #cc7d2e; /* 포인트 색상 (Miso Bakery 브라운/오렌지 톤) */
+  --color-white: #ffffff; /* 카드 내부 배경색 */
+  --color-border: #1a1a1a; /* 이나님 디자인의 핵심인 '얇은 검은색 테두리 선' */
+
+  /* 폰트 및 여백 */
+  --font-main: "Helvetica Neue", Arial, sans-serif;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 3rem;
+
+  /* 부드러운 전환 효과 */
+  --transition-smooth: all 0.25s ease;
+}

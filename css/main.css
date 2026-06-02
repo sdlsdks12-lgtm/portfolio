@@ -1,0 +1,313 @@
+/* 기존 css/main.css 파일 내용 아래쪽에 덮어쓰거나 전체 변경해 주세요 */
+@import "variables.css";
+@import "components/navbar.css";
+@import "components/cards.css";
+@import "components/form.css";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-lg);
+  text-transform: uppercase;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------------------------------------------ */
+/* ✨ 수정 및 추가된 로고 레이어 & 울트라 타이포그래피 스타일 */
+
+/* 로고 박스: 흰색 배경 로고가 미색 배경 위에 깔끔하게 얹어지도록 얇은 검은 선 부여 */
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* 로고 자체의 흰색 배경과 통일 */
+  border: 1px solid var(--color-border); /* 정갈한 테두리 선 */
+  padding: 4px 10px;
+  height: 45px; /* 로고 높이 조절 */
+  transition: var(--transition-smooth);
+}
+
+.logo-container:hover {
+  box-shadow: 2px 2px 0px var(--color-border);
+}
+
+.nav-logo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* HERO 섹션 */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.year-label {
+  font-size: 0.9rem;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+}
+
+/* 💥 대폭 키운 메인 타이포그래피 크기 (Mobile-first 디자인) */
+.mega-title {
+  font-size: 4.5rem; /* 모바일에서도 화면에 꽉 차게 변경 */
+  font-weight: 800;
+  letter-spacing: 4px;
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* 태블릿 이상 화면에서 글자 크기를 극대화 (교수님 요구사양 반영) */
+@media (min-width: 768px) {
+  .mega-title {
+    font-size: 8.5rem;
+    letter-spacing: 8px;
+  }
+}
+
+/* PC 화면 대형 폰트 사이즈 조정 */
+@media (min-width: 1200px) {
+  .mega-title {
+    font-size: 10.5rem;
+    letter-spacing: 12px;
+  }
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: var(--spacing-lg);
+  font-weight: 400;
+}
+
+.disciplines-list {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #666;
+  margin-bottom: var(--spacing-lg);
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: var(--transition-smooth);
+}
+
+.btn-cta:hover {
+  background-color: var(--text-color, var(--color-text));
+  color: var(--color-bg);
+}
+/* ------------------------------------------------ */
+
+/* 필터 버튼 스타일 */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1.2rem;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* 스크롤 애니메이션 스타일 */
+.observe-me {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.observe-me.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 푸터 */
+.main-footer {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ================================================ */
+/* 📄 여기서부터 상세페이지(Caso de Estudio) 전용 디자인 */
+/* ================================================ */
+
+.detalle-page {
+  background-color: var(--color-bg) !important;
+}
+
+.detalle-navbar {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 0;
+  background-color: var(--color-bg);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.logo-text {
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.detalle-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .case-study-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.btn-back {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-lg);
+  transition: var(--transition-smooth);
+}
+
+.btn-back:hover {
+  background-color: var(--color-text);
+  color: var(--color-white);
+}
+
+.study-section {
+  margin-bottom: 2.5rem;
+}
+
+.study-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.study-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  text-align: justify;
+}
+
+.main-image-box,
+.section-img-box {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  overflow: hidden;
+  margin-bottom: var(--spacing-lg);
+}
+
+.main-image-box img,
+.section-img-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: 1rem;
+}
+
+.sidebar-box {
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-md);
+  background-color: var(--color-white);
+  align-self: start;
+}
+
+.sidebar-box h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-box p {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+}
