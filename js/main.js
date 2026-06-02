@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
   const navbar = document.getElementById("navbar");
 
-  // [필수 조건 1] 갤러리를 완전히 비우고 다시 그리는 함수 (Re-render)
+  // (Re-render)
   function renderGallery(proyectos) {
-    gallery.innerHTML = ""; // 기존 카드를 완전히 삭제 (Ocultar 아님)
+    gallery.innerHTML = ""; // (Ocultar)
 
     if (proyectos.length === 0) {
       gallery.innerHTML = "<p>No se encontraron proyectos.</p>";
@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="project-info">
                     <span class="card-category">${proyecto.categoria}</span>
                     <h3>${proyecto.titulo}</h3>
-                    <p>${proyecto.descripcion}</p>
+                    <p>${proyecto.descripcion ? proyecto.descripcion : ""}</p>
                     <button class="btn-detail" data-id="${proyecto.id}">Ver caso de estudio</button>
                 </div>
             `;
       gallery.appendChild(card);
     });
 
-    // 각 카드의 버튼을 누르면 상세페이지로 ID를 넘겨주는 기능
+    // 
     document.querySelectorAll(".btn-detail").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const id = e.target.getAttribute("data-id");
@@ -38,10 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 처음 로드 시 모든 프로젝트를 갤러리에 표시
+  //
   renderGallery(proyectosData);
 
-  // [필수 조건 2] .filter()를 사용한 카테고리 필터링 시스템
+  // 
   filterButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       filterButtons.forEach((btn) => btn.classList.remove("active"));
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // [추가 인터랙션 조건] 스크롤 시 네비게이션 바 디자인 변경
+  // 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // [필수 조건 3] IntersectionObserver를 이용한 섹션 스르륵 애니메이션
+  // 
   const sectionsToObserve = document.querySelectorAll(".observe-me");
   const observerOptions = {
     root: null,
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // 한 번만 애니메이션 실행 후 해제
+        observer.unobserve(entry.target); // 
       }
     });
   }, observerOptions);
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
-  // [추가 조건] 연락처 폼 필드 실시간 유효성 검사 및 안내
+  // 
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault();
